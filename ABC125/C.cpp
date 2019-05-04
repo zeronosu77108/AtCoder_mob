@@ -16,14 +16,16 @@ int main (void) {
     }
 
     left[0] = a[0];
+    right[n-1] = a[n-1];
     for (int i=1; i<n; i++) {
         left[i] = gcd(left[i-1], a[i]);
+        right[n-i-1] = gcd(right[n-i], a[n-i-1]);
     } 
 
-    right[n-1] = a[n-1];
-    for (int i=n-2; i>=0; i--) {
-        right[i] = gcd(right[i+1], a[i]);
-    }
+    // right[n-1] = a[n-1];
+    // for (int i=n-2; i>=0; i--) {
+    //     right[i] = gcd(right[i+1], a[i]);
+    // }
 
     int ans = max(left[n-2], right[1]);
     for (int i=1; i<n-1; i++) {
